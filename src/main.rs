@@ -21,7 +21,7 @@ fn main() {
     
     let cel:f64 = (({faren} - 32.0) * 5.0) / 9.0;
 
-    println!("The temperature in Celcius is: {cel}")
+    println!("The temperature in Celcius is: {cel:.prec$}", prec = 3)
 
 
 
