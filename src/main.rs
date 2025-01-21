@@ -1,31 +1,24 @@
 use std::io;
 use std::io::Write;
 
-
-fn main() {
-    println!("Temperature Converter!");
-
-    print!("Enter the temperature in Fahrenheit: ");
-    io::stdout().flush().unwrap();
-
-    let mut faren = String::new();
-
-    io::stdin()
-        .read_line(&mut faren)
-        .expect("Could not read line");
-
-    let faren:f64 = faren.trim()
-        .parse()
-        .expect("Only numbers are accepted!");
-
+fn main () {
+    println! ("Temperature Converter v 0.1.0");
     
-    let cel:f64 = (({faren} - 32.0) * 5.0) / 9.0;
-
-    println!("The temperature in Celcius is: {cel:.prec$}", prec = 3)
-
-
-
-
-
-
+    let mut input = String::new();
+    
+    print! ("Enter temperature in Fahrenheit: ");
+    io::stdout().flush();
+    
+    io::stdin().read_line(&mut input)
+            .expect("Could not read line.");
+    
+    let temp: f32 = match input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => panic!("Not a number! Try again.")
+    };
+    
+    let celsius  = ((temp - 32.0) / (9.0/5.0));
+    
+    println!("{celsius}");
+    
 }
