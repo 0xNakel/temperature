@@ -36,4 +36,21 @@ fn main () {
     
     println!("{cel_deg}");
     
+    
+    print! ("Enter temperature in Celsius: ");
+    io::stdout().flush();
+    
+    let mut cel_deg = String::new();
+    io::stdin().read_line(&mut cel_deg)
+            .expect("Could not read line.");
+    
+    let cel_deg: f32 = match cel_deg.trim().parse() {
+        Ok(num) => num,
+        Err(_) => panic!("Not a number! Try again.")
+    };
+    
+    let fax_deg  = (cel_deg * (9.0/5.0) + 32.0 );
+    
+    println!("{fax_deg}")
+    
 }
