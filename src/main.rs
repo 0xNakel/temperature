@@ -4,22 +4,24 @@ use std::io::Write;
 
 fn main () {
     println! ("Temperature Converter v 0.1.0");
+ 
+ fn Choice() {
     
-    print! ("Select starting temperature [1] °F [2] °C [3] °K or [4] Quit: ");
+    print! ("Select starting unit [1] °F [2] °C [3] °K or [4] Quit: ");
     io::stdout().flush();
-    
-    let mut which_scale = String::new();
-    
-    
-    io::stdin().read_line(&mut which_scale)
+
+    let mut choice = String::new();
+
+    io::stdin().read_line(&mut choice)
             .expect("Could not read line.");
     
-    let which_scale: u8 = match which_scale.trim().parse() {
+    let choice: u8 = match choice.trim().parse() {
         Ok(num) => num,
-        Err(_) => panic!("Not a choice! Try again.")
+        Err(e) => panic!("{e}")
     };
     
-    match which_scale {
+ }
+    match choice {
         1 => println!("Fahrenheit chosen"),
         2 => println!("Celsius chosen"),
         3 => println!("Not yet implemented"),
@@ -36,12 +38,12 @@ fn main () {
     
     let fa_deg: f32 = match fa_deg.trim().parse() {
         Ok(num) => num,
-        Err(_) => panic!("Not a number! Try again.")
+        Err(e) => panic!("{e}")
     };
     
     let cel_deg  = (fa_deg - 32.0) / (9.0/5.0);
     
-    println!("{cel_deg}");
+    println!("{cel_deg} °C");
     
     
     print! ("Enter temperature in Celsius: ");
@@ -58,26 +60,6 @@ fn main () {
     
     let fax_deg  = cel_deg * (9.0/5.0) + 32.0;
     
-    println!("{fax_deg}")
-    
-}
-
-    
-    
-    print! ("Enter temperature in Celsius: ");
-    io::stdout().flush();
-    
-    let mut cel_deg = String::new();
-    io::stdin().read_line(&mut cel_deg)
-            .expect("Could not read line.");
-    
-    let cel_deg: f32 = match cel_deg.trim().parse() {
-        Ok(num) => num,
-        Err(_) => panic!("Not a number! Try again.")
-    };
-    
-    let fax_deg  = (cel_deg * (9.0/5.0) + 32.0 );
-    
-    println!("{fax_deg}")
+    println!("{fax_deg} °F")
     
 }
