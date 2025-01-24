@@ -1,27 +1,22 @@
-use std::io;
-use std::io::Write;
+use std::io::{self, Write};
 
 
 fn main () {
     println! ("Temperature Converter v 0.1.0");
- 
- fn Choice() {
-    
-    print! ("Select starting unit [1] °F [2] °C [3] °K or [4] Quit: ");
+
+    print! ("Select starting unit [F]ahrenheit [C]elsius [K]elvin or [Q]uit: ");
     io::stdout().flush();
 
-    let mut choice = String::new();
+    fn prompt_choice() -> Result <String, io::Error> {
+        let mut sel_choice = String::new();
+        io::stdin().read_line(&mut sel_choice)?;
+        Ok(sel_choice)
+    }
 
-    io::stdin().read_line(&mut choice)
-            .expect("Could not read line.");
     
-    let choice: u8 = match choice.trim().parse() {
-        Ok(num) => num,
-        Err(e) => panic!("{e}")
-    };
-    
- }
-    match choice {
+
+
+    match Result {
         1 => println!("Fahrenheit chosen"),
         2 => println!("Celsius chosen"),
         3 => println!("Not yet implemented"),
