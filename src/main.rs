@@ -6,6 +6,17 @@ enum Options {
     K,
     Q,
 }
+
+enum Temperatures {
+    Fahrenheit(Degree),
+    Celsius(Degree),
+    Kelvin(Degree),
+}
+
+struct Degree {
+    value: f64,
+}
+
 #[derive(Debug)]
 struct InputError;
 
@@ -33,8 +44,10 @@ fn main() {
         }
     }
 
-    print!("Select starting unit [F]ahrenheit [C]elsius [K]elvin or [Q]uit: ");
+    print!("Select starting scale  [F]ahrenheit [C]elsius [K]elvin or [Q]uit: ");
+
     io::stdout().flush();
+
     let mut input = String::new();
     std::io::BufReader::new(std::io::stdin())
         .read_line(&mut input)
