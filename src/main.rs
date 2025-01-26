@@ -20,11 +20,11 @@ fn main() {
     match selection.trim() {
         "F" | "f" => match f_to_c() {
             Ok(c_deg) => println!("Your temperature in Celsius is: {c_deg}"),
-            Err(err) => panic!("{err}"),
+            Err(err) => println!("Error found: {err}"),
         },
         "C" | "c" => match c_to_f() {
             Ok(f_deg) => println!("Your temperature in Fahrenheit is: {f_deg}"),
-            Err(err) => panic!("{err}"),
+            Err(err) => println!("Error found: {err}"),
         },
         "Q" | "q" => exit(0),
         _ => println!("Option not recognized"),
